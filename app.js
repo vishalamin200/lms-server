@@ -75,9 +75,9 @@ app.use('/user/course/', courseRouter)
 app.use('/user/payment/', paymentRoutes)
 
 
-// Ping Pong
-app.get('/ping', (req, res) => {
-    res.send("Pong")
+// for home page
+app.get('/', (req, res) => {
+    res.send("Server is running perfectly")
 })
 
 //for Misscallenous Pages Access
