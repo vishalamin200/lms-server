@@ -12,6 +12,7 @@ import errorUtilityFunc from './utils/error.util.js'
 import successUtilityFunc from './utils/success.util.js'
 
 import authRoutes from './routes/auth.routes.js'
+import contactRoutes from './routes/contact.routes.js'
 
 
 const app = express()
@@ -73,6 +74,8 @@ app.use('/user/auth/', userRouter)
 app.use('/user/course/', courseRouter)
 
 app.use('/user/payment/', paymentRoutes)
+
+app.use('/user/contact/', contactRoutes)
 
 
 // for home page
