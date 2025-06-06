@@ -5,7 +5,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "nodemon server.js"
   },
   "keywords": [],
@@ -34,5 +34,8 @@
     "passport-google-oauth20": "^2.0.0",
     "razorpay": "^2.9.4",
     "sib-api-v3-sdk": "^8.5.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
   }
 }
