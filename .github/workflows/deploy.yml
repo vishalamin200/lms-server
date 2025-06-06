@@ -1,0 +1,32 @@
+name: Test & Auto Deploy lms-server to EC2
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run test before deployment
+        run: |
+          npm install
+          npm test
+
+      - name: Deploy to EC2
+        if: success()
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_KEY }}
+          script: |
+            cd /home/ubuntu/lms-server
+            git pull origin main
+            npm install
+            pm2 restart lms-server
