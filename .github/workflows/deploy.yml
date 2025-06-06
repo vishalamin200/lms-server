@@ -27,6 +27,8 @@ jobs:
           key: ${{ secrets.EC2_KEY }}
           script: |
             cd /home/ubuntu/lms-server
+            git reset --hard
+            git clean -fd
             git pull origin main
             npm install
             pm2 restart lms-server
