@@ -83,6 +83,15 @@ app.get('/', (req, res) => {
     res.send("Server is running perfectly")
 })
 
+// for health check
+app.get("/health",(req,res)=>{
+    res.status(200).json({
+        status:'ok',
+        uptime: process.uptime(),
+        timestamp: new Date().toISOString()
+    })
+})
+
 //for Misscallenous Pages Access
 app.get('*', (req, res) => {
     res.send("Error 404: Page Doesn't Exist")
