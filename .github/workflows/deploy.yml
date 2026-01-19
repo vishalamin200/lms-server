@@ -18,17 +18,17 @@ jobs:
           npm install
           npm test
 
-      - name: Deploy to EC2
-        if: success()
-        uses: appleboy/ssh-action@v1.0.0
-        with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USERNAME }}
-          key: ${{ secrets.EC2_KEY }}
-          script: |
-            cd /home/ubuntu/lms-server
-            git reset --hard
-            git clean -fd
-            git pull origin main
-            npm install
-            pm2 restart lms-server
+      # - name: Deploy to EC2
+      #   if: success()
+      #   uses: appleboy/ssh-action@v1.0.0
+      #   with:
+      #     host: ${{ secrets.EC2_HOST }}
+      #     username: ${{ secrets.EC2_USERNAME }}
+      #     key: ${{ secrets.EC2_KEY }}
+      #     script: |
+      #       cd /home/ubuntu/lms-server
+      #       git reset --hard
+      #       git clean -fd
+      #       git pull origin main
+      #       npm install
+      #       pm2 restart lms-server
